@@ -7,7 +7,7 @@ export interface __NEXT_DATA__ {
 	isFallback: boolean;
 	isExperimentalCompile: boolean;
 	gssp: boolean;
-	scriptLoader: any[];
+	scriptLoader: unknown[];
 }
 
 export interface Query {
@@ -23,11 +23,11 @@ export interface Props {
 }
 
 export interface PageProps {
-	prefix?: any;
+	prefix?: unknown;
 	nonce: string;
 	reqId: string;
 	fallback: Fallback;
-	latestSubmission?: any;
+	latestSubmission?: unknown;
 	title: string;
 	description: string;
 	canonical: string;
@@ -49,13 +49,13 @@ export interface UserAgent {
 }
 
 export interface Device {
-	type?: any;
+	type?: unknown;
 }
 
 export interface Cookies {
-	coding_theme?: any;
-	coding_compiler?: any;
-	yndx_feature_flags?: any;
+	coding_theme?: unknown;
+	coding_compiler?: unknown;
+	yndx_feature_flags?: unknown;
 	yandexuid: string;
 }
 
@@ -104,7 +104,7 @@ export interface _9ueceq {
 	order: number;
 	isMultiFileSubmitsExpected: boolean;
 	type: string;
-	pictureProblemDetails?: any;
+	pictureProblemDetails?: unknown;
 	selectionBrief: SelectionBrief;
 }
 
@@ -124,7 +124,7 @@ export interface FileSettings {
 export interface Compiler {
 	slug: string;
 	available: boolean;
-	unavailableReason?: any;
+	unavailableReason?: unknown;
 	title: string;
 	version: string;
 	highlight: string;
@@ -141,7 +141,7 @@ export interface Statements {
 	legend: string;
 	inputFormat: string;
 	outputFormat: string;
-	notes?: any;
+	notes?: unknown;
 	samples: Sample[];
 }
 
@@ -163,9 +163,9 @@ export interface Input {
 export interface Navigation {
 	catalogue: string;
 	next: string;
-	previous?: any;
+	previous?: unknown;
 	hasRandom: boolean;
 	totalCount: number;
 }
 
-export type Fallback = {};
+export type Fallback = Record<string, never>;
