@@ -47,7 +47,24 @@ export async function activate(context: vscode.ExtensionContext) {
 				`solution.${runtimeSlugToExtension[runtime] || ""}`,
 			);
 			await writeFile(solutionFilePath, solution.result.content);
-			await writeFile(join(taskFolder, "README.md"), props.statements.legend);
+			await writeFile(
+				join(taskFolder, "README.md"),
+				// Может использовать dedent? хотя оверхед
+				// biome-ignore lint/style/useTemplate: <explanation>
+				`## ${props.order}. ${props.title} (${props.selectionBrief.title})\n\n` +
+					`${props.statements.legend}\n\n` +
+					`## Формат ввода:\n${props.statements.inputFormat}\n\n` +
+					`## Формат вывода:\n${props.statements.outputFormat}\n\n` +
+					props.statements.samples
+						.map(
+							(sample, index) =>
+								`### Пример ${index + 1}\n \`\`\`\n# Ввод\n\n${sample.input.content}\`\`\`\n \`\`\`\n# Вывод\n\n${sample.output.content}\`\`\``,
+						)
+						.join("\n") +
+					"\n" +
+					`- Теги: ${props.tags.map((tag) => `\`${tag}\``).join(", ")}\n` +
+					`- Сложность: ${props.difficulty}`,
+			);
 
 			// await vscode.commands.executeCommand(
 			// 	"vscode.openFolder",
