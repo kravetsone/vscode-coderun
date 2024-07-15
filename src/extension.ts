@@ -3,7 +3,7 @@ import { homedir } from "node:os";
 import path, { join } from "node:path";
 import vscode from "vscode";
 import type { _9ueceq } from "./types";
-import { ensureFolder } from "./utils";
+import { ensureFolder, runtimeSlugToExtension } from "./utils";
 import { CodeRun } from "./wrapper";
 // const jsonDocument = await vscode.workspace.openTextDocument({
 // 	language: "json",
@@ -32,22 +32,32 @@ export async function activate(context: vscode.ExtensionContext) {
 			const taskFolder = join(dir, `${props.problemContextId}. ${props.slug}`);
 			await ensureFolder(taskFolder);
 
+			const runtime = await vscode.window.showQuickPick(
+				props.compilers.map((x) => x.slug),
+				{ title: "Выберите язык/рантайм/движок/компилятор" },
+			);
+			if (!runtime) throw new Error("");
+
 			const solution = await CodeRun.fetchTaskSolutionTemplate(
-				"nodejs_20",
+				runtime,
 				props.problemContextId,
 			);
-			await writeFile(join(taskFolder, "solution.js"), solution.result.content);
+			const solutionFilePath = join(
+				taskFolder,
+				`solution.${runtimeSlugToExtension[runtime] || ""}`,
+			);
+			await writeFile(solutionFilePath, solution.result.content);
 			await writeFile(join(taskFolder, "README.md"), props.statements.legend);
 
-			await vscode.commands.executeCommand(
-				"vscode.openFolder",
-				vscode.Uri.file(taskFolder),
-			);
+			// await vscode.commands.executeCommand(
+			// 	"vscode.openFolder",
+			// 	vscode.Uri.file(taskFolder),
+			// );
 
-			await vscode.commands.executeCommand("workbench.action.closeSidebar");
+			// await vscode.commands.executeCommand("workbench.action.closeSidebar");
 
 			const solutionDocument = await vscode.workspace.openTextDocument(
-				vscode.Uri.file(join(taskFolder, "solution.js")),
+				vscode.Uri.file(solutionFilePath),
 			);
 			await vscode.window.showTextDocument(
 				solutionDocument,
