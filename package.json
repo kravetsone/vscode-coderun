@@ -38,7 +38,7 @@
     },
     "scripts": {
         "vscode:prepublish": "bun run package",
-        "compile": "bun run check-types && bun run lint && node esbuild.js",
+        "compile": "bun run check-types && bun run lint && bun esbuild.mts",
         "watch": "npm-run-all -p watch:*",
         "watch:esbuild": "bun esbuild.mts --watch",
         "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
