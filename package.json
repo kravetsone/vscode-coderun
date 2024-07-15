@@ -23,7 +23,7 @@
         "vscode:prepublish": "bun run package",
         "compile": "bun run check-types && bun run lint && node esbuild.js",
         "watch": "npm-run-all -p watch:*",
-        "watch:esbuild": "node esbuild.js --watch",
+        "watch:esbuild": "bun esbuild.mts --watch",
         "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
         "package": "bun run check-types && bun run lint && bun esbuild.mts --production",
         "compile-tests": "tsc -p . --outDir out",
