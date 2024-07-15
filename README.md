@@ -34,6 +34,8 @@
 | ignore-private-packages? | boolean  | true    | Ignore packages with `\"private\": true`?               |
 | ignored-rules?           | string[] | []      | List of ignored [rule](https://publint.dev/rules) codes | -->
 
+Чтобы открыть задачу в VS Code, вам нужно скопировать её ссылку и запустить команду (`ctrl+shift+p`), которая называется `CodeRun: Открыть задачу по ссылке`, затем вставить эту ссылку и выбрать необходимый язык/рантайм. После этого откроется описание задачи и шаблон на выбранном вами языке.
+
 ### Thanks
 
 -   [CodeRun](https://coderun.yandex.ru/) за оригинальный сервис, для которого и сделано это расширение.
