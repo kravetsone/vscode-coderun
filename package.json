@@ -31,8 +31,8 @@
     "contributes": {
         "commands": [
             {
-                "command": "vscode-coderun.helloWorld",
-                "title": "Hello World"
+                "command": "vscode-coderun.open-task-by-url",
+                "title": "CodeRun: Открыть задачу по ссылке"
             }
         ]
     },

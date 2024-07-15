@@ -18,7 +18,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	const dir = path.join(homedir(), ".coderun");
 
 	const disposable = vscode.commands.registerCommand(
-		"vscode-coderun.helloWorld",
+		"vscode-coderun.open-task-by-url",
 		async () => {
 			const url = await vscode.window.showInputBox({
 				title: "Введите ссылку на задачу",
