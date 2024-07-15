@@ -4,6 +4,7 @@
     "displayName": "CodeRun - тренажёр для разработчиков от Яндекса",
     "description": "Тренажёр для прокачивания навыков разработки фронтенда, бэкенда, мобильных приложений, ML и аналитики. От разработчиков для разработчиков.",
     "version": "0.0.1",
+    "publisher": "kravets",
     "author": {
         "name": "kravets",
         "url": "https://github.com/kravetsone"
